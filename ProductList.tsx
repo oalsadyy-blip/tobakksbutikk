@@ -1,0 +1,2 @@
+"use client";import {useEffect,useState} from "react";import ProductCard from "./ProductCard";import {seedProducts} from "@/lib/products";
+export default function ProductList({category}:{category?:string}){const [products,setProducts]=useState<any[]>([]);useEffect(()=>{const saved=localStorage.getItem("tb_products");setProducts(saved?JSON.parse(saved):seedProducts)},[]);let items=category?products.filter(p=>String(p.category).toLowerCase()===category.toLowerCase()):products;return <div className="grid">{items.map(p=><ProductCard key={p.id} product={p}/>)}</div>}

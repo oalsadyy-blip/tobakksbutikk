@@ -1,0 +1,1 @@
+import "./globals.css";import Header from "@/components/Header";export const metadata={title:"Tobakksbutikk"};export default function Layout({children}:any){return <html lang="no"><body><Header/>{children}<footer><b>Tobakksbutikk</b><p>Premium Tobakksbutikk i Norge</p></footer></body></html>}

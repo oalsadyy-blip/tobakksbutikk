@@ -1,0 +1,1 @@
+import ProductList from "@/components/ProductList";export default function Products(){return <main><section className="section"><p className="eyebrow">Butikk</p><h1>Alle produkter</h1><ProductList/></section></main>}
