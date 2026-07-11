@@ -1,22 +1,12 @@
-TOBAKKSBUTIKK – STABIL DEPLOY-VERSJON
+TOBAKKSBUTIKK + SUPABASE
 
-Denne versjonen er bevisst bygget uten Next.js build-trinn.
-Den kan publiseres direkte på Vercel uten app/pages-feilen.
+1. In supabase_admin_policies.sql replace PUT_YOUR_ADMIN_EMAIL_HERE with your admin email, then run it in Supabase SQL Editor.
+2. In Supabase: Authentication > Users > Add user. Create the same admin email and a password.
+3. Keep these Vercel variables:
+   NEXT_PUBLIC_SUPABASE_URL
+   NEXT_PUBLIC_SUPABASE_ANON_KEY
+4. Upload all files and the api folder to the GitHub repository root.
 
-Filer som skal ligge i GitHub root:
-- index.html
-- admin.html
-- cart.html
-- styles.css
-- app.js
-- admin.js
-- cart.js
-- vercel.json
-- sample_products_import.csv
-
-Admin:
-https://DITT-DOMENE/admin
-
-Viktig:
-Admin lagrer foreløpig data i nettleserens localStorage.
-Neste steg er Supabase database og login, uten å endre designet eller starte på nytt.
+Store: /
+Admin: /admin
+Cart: /cart
