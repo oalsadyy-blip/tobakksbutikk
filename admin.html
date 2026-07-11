@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin | Tobakksbutikk</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement">Adminpanel • Tobakksbutikk</div>
+  <header class="header">
+    <a class="logo" href="index.html"><span class="logo-mark">TB</span><span>Tobakksbutikk</span></a>
+    <nav><a href="index.html">Se butikk</a></nav>
+  </header>
+
+  <main class="section">
+    <p class="eyebrow">Admin</p>
+    <h1>Produktpanel</h1>
+    <div class="notice">
+      Denne første stabile versjonen lagrer produkter i nettleseren. Den publiseres nå uten build-feil. Neste steg kobler samme panel til Supabase slik at data blir felles for alle enheter.
+    </div>
+
+    <div class="admin-layout">
+      <section>
+        <h2>Legg til / oppdater produkt</h2>
+        <form id="product-form" class="form">
+          <input id="id" placeholder="SKU / ID">
+          <input id="name" required placeholder="Produktnavn">
+          <input id="brand" placeholder="Merke">
+          <select id="category">
+            <option>Snus</option>
+            <option>Sigaretter</option>
+            <option>Sigarer</option>
+            <option>Cigarillos</option>
+            <option>Rulletobakk</option>
+            <option>Rullepapir</option>
+            <option>Pipetobakk</option>
+            <option>Tilbehør</option>
+            <option>Hemp Wraps</option>
+          </select>
+          <input id="price" type="number" min="0" placeholder="Pris NOK">
+          <input id="stock" type="number" min="0" placeholder="Lager">
+          <input id="tag" maxlength="3" placeholder="Kortkode, f.eks. SM">
+          <textarea id="description" placeholder="Produktbeskrivelse"></textarea>
+          <button class="btn" type="submit">Lagre produkt</button>
+        </form>
+
+        <h2>Importer CSV</h2>
+        <input id="csv-file" type="file" accept=".csv">
+        <p class="muted">Kolonner: sku,name,brand,category,price_nok,stock,description</p>
+        <div class="button-row">
+          <button class="btn secondary" id="export-json">Eksporter JSON</button>
+          <button class="btn secondary" id="reset-products">Tilbakestill startdata</button>
+        </div>
+        <p id="message" class="notice hidden"></p>
+      </section>
+
+      <section>
+        <h2>Produkter (<span id="admin-count">0</span>)</h2>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Produkt</th><th>Kategori</th><th>Pris</th><th>Lager</th><th></th></tr></thead>
+            <tbody id="admin-products"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
