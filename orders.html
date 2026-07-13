@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bestillinger | Tobakksbutikk</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="announcement">Adminpanel • Bestillinger</div>
+  <header class="header">
+    <a class="logo" href="index.html"><span class="logo-mark">TB</span><span>Tobakksbutikk</span></a>
+    <nav><a href="admin.html">Produkter</a><a href="orders.html">Bestillinger</a><a href="index.html">Se butikk</a></nav>
+  </header>
+
+  <main class="section">
+    <section id="orders-login-panel" class="login-card">
+      <p class="eyebrow">Admin</p>
+      <h1>Bestillinger</h1>
+      <form id="orders-login-form" class="form">
+        <input id="orders-login-email" type="email" required placeholder="E-post">
+        <input id="orders-login-password" type="password" required placeholder="Passord">
+        <button class="btn" type="submit">Logg inn</button>
+      </form>
+      <p id="orders-login-message" class="notice hidden"></p>
+    </section>
+
+    <section id="orders-panel" class="hidden">
+      <div class="admin-toolbar">
+        <div><p class="eyebrow">Ordreadministrasjon</p><h1>Bestillinger</h1><p>Innlogget som <strong id="orders-admin-email"></strong></p></div>
+        <button id="orders-logout-btn" class="btn secondary">Logg ut</button>
+      </div>
+
+      <section class="orders-stats">
+        <article class="stat-card"><span>Totalt</span><strong id="stat-total-orders">0</strong></article>
+        <article class="stat-card"><span>Venter</span><strong id="stat-pending-orders">0</strong></article>
+        <article class="stat-card"><span>Fullført</span><strong id="stat-completed-orders">0</strong></article>
+        <article class="stat-card"><span>Omsetning</span><strong id="stat-revenue">0.00 NOK</strong></article>
+      </section>
+
+      <section class="orders-controls">
+        <input id="orders-search" class="search" placeholder="Søk etter navn, e-post eller ordrenummer...">
+        <select id="orders-status-filter" class="search">
+          <option value="">Alle statuser</option><option value="pending">Venter</option>
+          <option value="processing">Behandles</option><option value="completed">Fullført</option>
+          <option value="cancelled">Kansellert</option>
+        </select>
+        <button id="refresh-orders" class="btn secondary">Oppdater</button>
+      </section>
+
+      <p id="orders-message" class="notice hidden"></p>
+      <div id="orders-list" class="orders-list"></div>
+    </section>
+  </main>
+
+  <script src="orders.js"></script>
+</body>
+</html>
