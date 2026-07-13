@@ -117,20 +117,23 @@ document.getElementById("checkout-form").addEventListener("submit", async event 
   try {
     const total = calculateTotal(cart);
 
-    const { data: order, error: orderError } = await supabaseClient
-      .from("orders")
-      .insert({
-        customer_name: customer.name,
-        customer_email: customer.email,
-        customer_phone: customer.phone,
-        shipping_address: customer.address,
-        postal_code: customer.postalCode,
-        city: customer.city,
-        total,
-        status: "pending"
-      })
-      .select("id")
-      .single();
+    const orderId = crypto.randomUUID();
+
+const { error: orderError } = await supabaseClient
+  .from("orders")
+  .insert({
+    id: orderId,
+    customer_name: customer.name,
+    customer_email: customer.email,
+    customer_phone: customer.phone,
+    shipping_address: customer.address,
+    postal_code: customer.postalCode,
+    city: customer.city,
+    total,
+    status: "pending"
+  });
+
+const order = { id: orderId };
 
     if (orderError) throw orderError;
 
