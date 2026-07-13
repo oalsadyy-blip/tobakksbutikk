@@ -26,3 +26,19 @@
     grid-template-columns: 1fr;
   }
 }
+.orders-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:28px 0}
+.stat-card{background:#161616;border:1px solid #292929;padding:22px}
+.stat-card span{display:block;color:#bbb;margin-bottom:8px}.stat-card strong{font-size:28px;color:#D6A84F}
+.orders-controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}.orders-controls .search{min-width:220px}
+.orders-list{display:grid;gap:20px}.order-card{background:#111;border:1px solid #292929;padding:22px}
+.order-card-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:20px}
+.order-card h2{margin:10px 0 4px;font-size:28px}.order-total{text-align:right}.order-total span{display:block;color:#bbb}
+.order-total strong{display:block;color:#D6A84F;font-size:24px;margin-top:6px}
+.order-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.order-grid section{border:1px solid #292929;padding:16px}.order-grid h3{margin-top:0}
+.order-status-select{width:100%;padding:12px;background:#111;color:#fff;border:1px solid #333}
+.status-badge{display:inline-block;padding:7px 10px;border-radius:999px;font-size:13px;font-weight:900}
+.status-pending{background:#5c4515;color:#ffd66b}.status-processing{background:#173e57;color:#87d6ff}
+.status-completed{background:#153f2f;color:#8ff0bf}.status-cancelled{background:#542020;color:#ff9c9c}
+@media(max-width:980px){.orders-stats,.order-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.orders-stats,.order-grid{grid-template-columns:1fr}.order-card-top{flex-direction:column}.order-total{text-align:left}}
