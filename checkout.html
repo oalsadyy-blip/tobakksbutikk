@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Betaling | Tobakksbutikk</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="announcement">Sikker betaling • Diskret pakking</div>
+  <header class="header">
+    <a class="logo" href="index.html"><span class="logo-mark">TB</span><span>Tobakksbutikk</span></a>
+    <nav><a href="cart.html">Tilbake til kurven</a></nav>
+  </header>
+
+  <main class="section">
+    <p class="eyebrow">Checkout</p>
+    <h1>Fullfør bestillingen</h1>
+
+    <div class="checkout-layout">
+      <form id="checkout-form" class="form">
+        <input id="customer-name" required placeholder="Fullt navn">
+        <input id="customer-email" type="email" required placeholder="E-post">
+        <input id="customer-phone" required placeholder="Telefon">
+        <input id="address" required placeholder="Adresse">
+        <input id="postal-code" required placeholder="Postnummer">
+        <input id="city" required placeholder="By">
+
+        <label>
+          <input id="age-confirmation" type="checkbox" required>
+          Jeg bekrefter at jeg er 18 år eller eldre.
+        </label>
+
+        <button class="btn" type="submit">Send bestilling</button>
+        <p id="checkout-message" class="notice hidden"></p>
+      </form>
+
+      <aside class="summary">
+        <h2>Ordresammendrag</h2>
+        <div id="checkout-items"></div>
+        <p id="checkout-total" class="price">Total: 0.00 NOK</p>
+      </aside>
+    </div>
+  </main>
+
+  <script src="checkout.js"></script>
+</body>
+</html>
