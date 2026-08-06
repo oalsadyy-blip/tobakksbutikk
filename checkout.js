@@ -62,6 +62,36 @@ async function initSupabase() {
 }
 
 async function sendOrderEmails(order, cart, customer) {
+  async function startStripePayment(order, cart, customer) {
+  const response = await fetch("/api/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      orderId: order.id,
+      customerEmail: customer.email,
+      cart: cart.map((item) => ({
+        name: item.name,
+        price: Number(item.price),
+        quantity: Number(item.quantity || 1),
+      })),
+    }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "Kunne ikke starte betalingen.");
+  }
+
+  if (!data.url) {
+    throw new Error("Stripe returnerte ingen betalingslenke.");
+  }
+
+  window.location.href = data.url;
+}
+
   const response = await fetch("/api/send-order-email", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -149,7 +179,8 @@ const order = { id: orderId };
       .insert(orderItems);
 
     if (itemError) throw itemError;
-
+await startStripePayment(order, cart, customer);
+return;
     let emailNote = "";
 
     try {
