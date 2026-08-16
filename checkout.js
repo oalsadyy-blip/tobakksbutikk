@@ -60,9 +60,7 @@ async function initSupabase() {
     }
   );
 }
-
-async function sendOrderEmails(order, cart, customer) {
-  async function startStripePayment(order, cart, customer) {
+async function startStripePayment(order, cart, customer) {
   const response = await fetch("/api/create-checkout-session", {
     method: "POST",
     headers: {
@@ -80,6 +78,19 @@ async function sendOrderEmails(order, cart, customer) {
   });
 
   const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "Kunne ikke starte betalingen.");
+  }
+
+  if (!data.url) {
+    throw new Error("Stripe returnerte ingen betalingslenke.");
+  }
+
+  window.location.href = data.url;
+}
+
+async function sendOrderEmails(order, cart, customer) {
 
   if (!response.ok) {
     throw new Error(data.error || "Kunne ikke starte betalingen.");
