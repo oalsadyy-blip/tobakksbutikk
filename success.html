@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Betaling fullført | Tobakksbutikk</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .success-page {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .success-card {
+      max-width: 650px;
+      width: 100%;
+      text-align: center;
+      padding: 50px 35px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+    }
+
+    .success-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+
+    .success-card h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .success-card p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .success-card .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="success-page">
+    <div class="success-card">
+
+      <div class="success-icon">✓</div>
+
+      <h1>Betaling fullført</h1>
+
+      <p>
+        Takk for bestillingen! Betalingen er mottatt, og bestillingen din
+        er registrert.
+      </p>
+
+      <a href="index.html" class="btn">Tilbake til butikken</a>
+
+    </div>
+  </main>
+
+  <script>
+    localStorage.removeItem("tb_cart");
+  </script>
+
+</body>
+</html>
