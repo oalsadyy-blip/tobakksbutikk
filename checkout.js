@@ -204,13 +204,11 @@ return;
       emailNote = " Bestillingen er lagret, men e-postvarslingen feilet.";
     }
 
-    localStorage.removeItem("tb_cart");
+    
     showMessage(`Bestillingen er mottatt.${emailNote}`);
     event.target.reset();
 
-    setTimeout(() => {
-      window.location.href = "index.html";
-    }, 3500);
+   
   } catch (error) {
     console.error(error);
     showMessage(error.message || "Kunne ikke sende bestillingen.", true);
