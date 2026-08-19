@@ -91,21 +91,11 @@ async function startStripePayment(order, cart, customer) {
 }
 
 async function sendOrderEmails(order, cart, customer) {
-
-  if (!response.ok) {
-    throw new Error(data.error || "Kunne ikke starte betalingen.");
-  }
-
-  if (!data.url) {
-    throw new Error("Stripe returnerte ingen betalingslenke.");
-  }
-
-  window.location.href = data.url;
-}
-
   const response = await fetch("/api/send-order-email", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       orderId: order.id,
       customerName: customer.name,
@@ -115,23 +105,26 @@ async function sendOrderEmails(order, cart, customer) {
       postalCode: customer.postalCode,
       city: customer.city,
       total: calculateTotal(cart),
-      items: cart.map(item => ({
+      items: cart.map((item) => ({
         name: item.name,
         quantity: Number(item.quantity || 1),
-        price: Number(item.price || 0)
-      }))
-    })
+        price: Number(item.price || 0),
+      })),
+    }),
   });
 
   const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result?.error || "Bestillingen ble lagret, men e-posten kunne ikke sendes.");
+    throw new Error(
+      result?.error ||
+        "Bestillingen ble lagret, men e-posten kunne ikke sendes."
+    );
   }
 
   return result;
 }
-
+  
 document.getElementById("checkout-form").addEventListener("submit", async event => {
   event.preventDefault();
 
