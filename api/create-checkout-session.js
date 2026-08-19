@@ -1,6 +1,6 @@
 const Stripe = require("stripe");
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_secret_key);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
